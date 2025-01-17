@@ -5,5 +5,5 @@ def uppercase(str):
             mayus = chr(ord(a) - 32)
         else:
             mayus = a
-        print(mayus, end="")
+        print("{}".format(mayus), end="")
     print()
