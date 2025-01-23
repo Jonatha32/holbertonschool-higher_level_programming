@@ -2,7 +2,7 @@
 def max_integer(my_list=[]):
     a = len(my_list)
     if my_list == "":
-        return (a, None)
+        return (None)
     mayor = my_list[0]
 
     for i in my_list:
