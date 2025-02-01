@@ -19,11 +19,6 @@ class Square:
             TypeError: if 'size' is not an integer.
             ValueError: if 'size' is negative.
         """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-
-        if size < 0:
-            raise ValueError("size must be >= 0")
 
         self.__size = size
         self.position = position
@@ -42,6 +37,7 @@ class Square:
 
     @property
     def size(self):
+
         return (self.__size)
 
     @size.setter
@@ -69,11 +65,11 @@ class Square:
 
     def my_print(self):
         if self.__size == 0:
-            print("$")
+            print("")
             return
 
         for _ in range(self.__position[1]):
-            print("$")
+            print("")
 
         for _ in range(self.__size):
-            print("_" * self.__position[0] + "#" * self.__size + "$")
+            print(" " * self.__position[0] + "#" * self.__size)
