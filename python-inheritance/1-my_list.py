@@ -14,5 +14,5 @@ class MyList(list):
         """
         Prints the elements
         """
-        self.sort()
-        print(self)
+
+        print(sorted(self))
