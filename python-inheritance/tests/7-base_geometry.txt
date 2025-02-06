@@ -18,3 +18,57 @@ ValueError: age must be greater than 0
 Traceback (most recent call last):
     ...
 ValueError: distance must be greater than 0
+
+[copy_files] Filed copied: base_geometry_7_1.py
+[copy_and_replace_file] Substrings replaced in file: tests/7-base_geometry_1.txt
+[doctest_number_failed] Command to run:
+python3 -m doctest  -v ./tests/7-base_geometry_1.txt
+su student_jail -c 'timeout 30 bash -c '"'"'python3 -m doctest  -v ./tests/7-base_geometry_1.txt'"'"''
+[doctest_number_failed] Return code: 0
+[doctest_number_failed] Student stdout:
+Trying:
+    BaseGeometry = __import__('base_geometry_7_1').BaseGeometry
+Expecting nothing
+ok
+Trying:
+    bg = BaseGeometry()
+Expecting nothing
+ok
+Trying:
+    bg.integer_validator("my_int", 12)
+Expecting nothing
+ok
+Trying:
+    bg.integer_validator("width", 89)
+Expecting nothing
+ok
+Trying:
+    bg.integer_validator("name", "John")
+Expecting:
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+ok
+Trying:
+    bg.integer_validator("age", 0)
+Expecting:
+    Traceback (most recent call last):
+        ...
+    ValueError: age must be greater than 0
+ok
+Trying:
+    bg.integer_validator("distance", -4)
+Expecting:
+    Traceback (most recent call last):
+        ...
+    ValueError: distance must be greater than 0
+ok
+1 items passed all tests:
+   7 tests in 7-base_geometry_1.txt
+7 tests in 1 items.
+7 passed and 0 failed.
+Test passed.
+[doctest_number_failed] Student stdout length: 865
+[doctest_number_failed] Student stderr:
+[doctest_number_failed] Student stderr length: 0
+[doctest_number_failed] Actual number of failed tests: 0
