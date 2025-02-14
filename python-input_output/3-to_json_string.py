@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-import json
-
 """
 Module Json Voorhees
 """
+
+
+import json
 
 
 def to_json_string(my_obj):
