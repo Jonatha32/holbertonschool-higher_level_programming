@@ -5,6 +5,9 @@ Module
 
 
 def pascal_triangle(n):
+    """
+    pascal triangulo
+    """
     if n <= 0:
         return []
 
