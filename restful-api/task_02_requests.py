@@ -8,7 +8,7 @@ url = 'https://jsonplaceholder.typicode.com/posts/'
 def fetch_and_print_posts():
     response = requests.get(url)
     print(f"Status Code: {response.status_code}")
-    
+
     if response.status_code == 200:
         data = response.json()
         for i in data:
@@ -27,17 +27,17 @@ def fetch_and_save_posts():
             list_dic = {
                 "id": i["id"],
                 "title": i["title"],
-                "body": i["body"]
+                "body": i["body"],
+                "userId": i["userId"]
             }
             list_.append(list_dic)
 
         with open('posts.csv', mode='w', newline='') as file:
-            a = ['id', 'title', 'body']
-            writer = csv.DictWriter(file, a=a)
-
+            writer = csv.DictWriter(file, fieldnames=["id", "title",
+                                                      "body", "userId"])
             writer.writeheader()
-            writer.writerows(list_)
 
-        print("Data successfully saved to post.csv")
+            for i in list_:
+                writer.writerow(i)
     else:
         print("Failed to fetch data.")
