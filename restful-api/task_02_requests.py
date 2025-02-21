@@ -15,7 +15,7 @@ def fetch_and_print_posts():
         print("Failed to fetch post.")
 
 
-def fetch_and_save_post():
+def fetch_and_save_posts():
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
