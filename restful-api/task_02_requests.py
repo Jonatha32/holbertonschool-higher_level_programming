@@ -28,13 +28,11 @@ def fetch_and_save_posts():
                 "id": i["id"],
                 "title": i["title"],
                 "body": i["body"],
-                "userId": i["userId"]
             }
             list_.append(list_dic)
 
         with open('posts.csv', mode='w', newline='') as file:
-            writer = csv.DictWriter(file, fieldnames=["id", "title",
-                                                      "body", "userId"])
+            writer = csv.DictWriter(file, fieldnames=["id", "title", "body"])
             writer.writeheader()
 
             for i in list_:
