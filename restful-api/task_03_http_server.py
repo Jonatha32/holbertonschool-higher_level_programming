@@ -35,7 +35,8 @@ class SimpleHTTP(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(b"")
+            response = {"error": "Not found"}
+            self.wfile.write(json.dumps(response).encode())
 
 
 def run(s_class=HTTPServer, handler=SimpleHTTP, port=8000):
