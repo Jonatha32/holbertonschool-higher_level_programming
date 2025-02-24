@@ -23,20 +23,12 @@ class SimpleHTTP(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"OK")
 
-        elif self.path == "/info":
-            self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.end_headers()
-            response = {"version": "1.0", "description":
-                        "A simple API built with http.server"}
-            self.wfile.write(json.dumps(response).encode())
-
         else:
             self.send_response(404)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(json.dumps({"error": "Endpoint not found"})
-                             .encode())
+            error = {"error": "Endpoint not found"}
+            self.wfile.write(json.dumps(error).encode())
 
 
 def run(s_class=HTTPServer, handler=SimpleHTTP, port=8000):
