@@ -45,11 +45,23 @@ def get_user(username):
 def add_user():
     data = request.get_json()
 
-    if not data.get('username'):
+    if not isinstance(data, dict):
+        return (jsonify({"error": "Invalid JSON format"}), 400)
+
+    user_name = data.get("username", "").strip()
+    if not user_name:
         return (jsonify({"error": "Username is required"}), 400)
 
-    users[data['username']] = data
-    return (jsonify({"message": "User add", "user": data}), 201)
+    if user_name in users:
+        return (jsonify({"error": "User exists"}), 400)
+
+    users[user_name] = {
+        "username": user_name,
+        "name": data.get("name", ""),
+        "age": data.get("age", 0),
+        "city": data.get("city", "")
+    }
+    return (jsonify({"message": "User added", "user": users[user_name]}), 201)
 
 
 if __name__ == "__main__":
