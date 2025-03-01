@@ -45,22 +45,11 @@ def get_user(username):
 def add_user():
     data = request.get_json()
 
-    if not data or "username" not in data:
-        return jsonify({"error": "Username is required"}), 400
+    if not data.get('username'):
+        return (jsonify({"error": "Username is required"}), 400)
 
-    user_name = data["username"]
-    if user_name in users:
-        return jsonify({"error": "User already exists"}), 400
-
-    new_user = {
-        "username": user_name,
-        "name": data.get("name", ""),
-        "age": data.get("age", 0),
-        "city": data.get("city", "")
-    }
-
-    users[user_name] = new_user
-    return jsonify({"message": "User added", "user": new_user}), 201
+    users[data['username']] = data
+    return (jsonify({"message": "User add", "user": data}), 201)
 
 
 if __name__ == "__main__":
