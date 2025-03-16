@@ -12,11 +12,11 @@ if __name__ == "__main__":
 
     datab = MySQLdb.connect(host='localhost', user=username,
                             passwd=password, db=database)
-    curs = datab.cursor()
-    curs.execute("SELECT * FROM states ORDER BY id ASC")
-    res = curs.fetchall()
+    curso = datab.cursor()
+    curso.execute("SELECT * FROM states ORDER BY id ASC")
+    res = curso.fetchall()
     for row in res:
         print(row)
 
-    curs.close()
+    curso.close()
     datab.close()
