@@ -49,7 +49,7 @@ def handle_expired_token_error(err):
 @app.route('/basic-protected', methods=['GET'])
 @auth.login_required
 def basic_protected():
-    return jsonify({"message": "Basic Auth: Access granted"})
+    return jsonify({"message": "Basic Auth: Access Granted"})
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -64,7 +64,9 @@ def login():
     access_tok = create_access_token(
         identity={'username': usern, 'role': users[usern]['role']},
     )
-    return jsonify(access_tok=access_tok)
+    return jsonify({
+        "access_tok" : access_tok
+        })
 
 @app.route('/jwt-protected', methods=['GET'])
 @jwt_required()
