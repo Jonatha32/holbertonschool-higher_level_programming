@@ -21,7 +21,7 @@ if __name__ == "__main__":
         'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
             username, password, database
         ),
-        p=True
+        pool_pre_ping=True
     )
     
     Se = sessionmaker(bind=engine)
