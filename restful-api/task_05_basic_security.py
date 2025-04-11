@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 
 from flask import Flask, jsonify, request
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_httpauth import HTTPBasicAuth
-from flask_jwt_extended import (
-    JWTManager, create_access_token, jwt_required,
-    get_jwt_identity, verify_jwt_in_request
-)
+from flask_jwt_extended import (JWTManager, create_access_token,
+                                jwt_required, get_jwt_identity)
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
