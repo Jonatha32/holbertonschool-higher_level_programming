@@ -20,7 +20,9 @@ def generate_invitations(template, attendees):
     for a, attendee in enumerate(attendees, start=1):
         invitation = template
         for key, value in ["name", "event_title", "event_date", "event_location"]:
-            value = attendee.get(key, "N/A")
+            value = attendee.get(key)
+            if value is None:
+                vale = 'N/A'
             invitation = invitation.replace(f"{{{key}}}", value)
             
         file_ = f"output_{a}.txt"
